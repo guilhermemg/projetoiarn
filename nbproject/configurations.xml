@@ -5,9 +5,11 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="headers" projectFiles="true">
+        <itemPath>ImageFormatConverter.h</itemPath>
         <itemPath>/home/guilhermemg/Desktop/Link to Inteligencia Artificial/ProjetoIARN/headers/ImageNoisesExtractor.h</itemPath>
         <itemPath>/home/guilhermemg/Desktop/Link to Inteligencia Artificial/ProjetoIARN/headers/ImageOneChannelHistogramCreator.h</itemPath>
         <itemPath>/home/guilhermemg/Desktop/Link to Inteligencia Artificial/ProjetoIARN/headers/Main.h</itemPath>
+        <itemPath>/home/guilhermemg/Desktop/Graduacao/Periodos/Periodo_10/Inteligencia Artificial/ProjetoIARN/headers/TesseractExecutor.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -17,9 +19,11 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>ImageFormatConverter.cpp</itemPath>
       <itemPath>/home/guilhermemg/Desktop/Link to Inteligencia Artificial/ProjetoIARN/ImageNoisesExtractor.cpp</itemPath>
       <itemPath>ImageOneChannelHistogramCreator.cpp</itemPath>
       <itemPath>Main.cpp</itemPath>
+      <itemPath>/home/guilhermemg/Desktop/Graduacao/Periodos/Periodo_10/Inteligencia Artificial/ProjetoIARN/TesseractExecutor.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -43,24 +47,51 @@
       </toolsSet>
       <compileType>
         <ccTool>
+          <commandlineTool>g++</commandlineTool>
           <incDir>
             <pElem>/usr/local/include/opencv</pElem>
             <pElem>/usr/local/include/opencv2</pElem>
-            <pElem>/usr/local/include/ImageMagick</pElem>
-            <pElem>/usr/local/tesseract</pElem>
+            <pElem>/usr/local/include/tesseract</pElem>
             <pElem>/usr/local/include/leptonica</pElem>
-            <pElem>/usr/lib/ImageMagick</pElem>
+            <pElem>/usr/local/include/ImageMagick-7</pElem>
           </incDir>
+          <commandLine>`Magick++-config --cppflags --cxxflags --ldflags --libs` </commandLine>
         </ccTool>
+        <asmTool>
+          <commandLine>`Magick++-config --cppflags --cxxflags --ldflags --libs` </commandLine>
+        </asmTool>
         <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/projetoiarn</output>
           <linkerAddLib>
             <pElem>/usr/lib</pElem>
+            <pElem>/usr/local/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
             <linkerOptionItem>`pkg-config --libs opencv`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs ImageMagick`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs lept`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs Magick++`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs MagickCore`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs MagickWand`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs ImageMagick-7.Q16HDRI`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs Magick++-7.Q16HDRI`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs MagickCore-7.Q16HDRI`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs MagickWand-7.Q16HDRI`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs tesseract`</linkerOptionItem>
           </linkerLibItems>
+          <commandLine>-llept -ltesseract `Magick++-config --cppflags --cxxflags --ldflags --libs` </commandLine>
         </linkerTool>
       </compileType>
+      <item path="/home/guilhermemg/Desktop/Graduacao/Periodos/Periodo_10/Inteligencia Artificial/ProjetoIARN/TesseractExecutor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/guilhermemg/Desktop/Graduacao/Periodos/Periodo_10/Inteligencia Artificial/ProjetoIARN/headers/TesseractExecutor.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/home/guilhermemg/Desktop/Link to Inteligencia Artificial/ProjetoIARN/ImageNoisesExtractor.cpp"
             ex="false"
             tool="1"
@@ -80,6 +111,10 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="ImageFormatConverter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ImageFormatConverter.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ImageOneChannelHistogramCreator.cpp"
             ex="false"
@@ -109,6 +144,16 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="/home/guilhermemg/Desktop/Graduacao/Periodos/Periodo_10/Inteligencia Artificial/ProjetoIARN/TesseractExecutor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/guilhermemg/Desktop/Graduacao/Periodos/Periodo_10/Inteligencia Artificial/ProjetoIARN/headers/TesseractExecutor.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="/home/guilhermemg/Desktop/Link to Inteligencia Artificial/ProjetoIARN/ImageNoisesExtractor.cpp"
             ex="false"
             tool="1"
@@ -128,6 +173,10 @@
             ex="false"
             tool="3"
             flavor2="0">
+      </item>
+      <item path="ImageFormatConverter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ImageFormatConverter.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ImageOneChannelHistogramCreator.cpp"
             ex="false"

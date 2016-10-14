@@ -1,3 +1,10 @@
 /build/
 /dist/
 .dep.inc
+/images
+/transcMachine
+/transcMachine2
+/limImgs
+/tiff
+/tiffMachine
+/humanTranscriptions

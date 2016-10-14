@@ -8,11 +8,6 @@
 #include "headers/Main.h"
 
 
-void Main::saveLimiarizedImage(IplImage* img, string path) {
-    //TODO
-}
-
-
 /*
  * 1. LE IMAGENS
  * 2. PREPROCESSA IMAGENS
@@ -21,41 +16,55 @@ void Main::saveLimiarizedImage(IplImage* img, string path) {
  */
 int main(int argc, char** argv) {
     
-    vector<string> imagesPaths;
-    
-    string path1 = "/page/img1.png";
-    string path2 = "/page/img2.png";
-    string path3 = "/page/img3.png";
-    
-    imagesPaths.push_back(path1);
-    imagesPaths.push_back(path2);
-    imagesPaths.push_back(path3);
-    
-    //for(int i = 0; i < imagesPaths.size(); i++) {
-    IplImage* image = cvLoadImage("images/img1.png", CV_LOAD_IMAGE_COLOR);
-
-    if(!image)                              // Check for invalid input
-    {
-        cout <<  "Could not open or find the image" << std::endl ;
-        return -1;
+    vector<string> imgsPaths = vector<string>();
+    for(int i = 1; i < 76; i++) {
+        std::ostringstream s;
+        s << i;
+        if(i < 10) {
+            imgsPaths.push_back("images/Treinamento #0" + s.str() + ".png");
+        }
+        else {
+            imgsPaths.push_back("images/Treinamento #" + s.str() + ".png");
+        }
     }
     
-    ImageNoisesExtractor* imgNoiseExtractor = new ImageNoisesExtractor(image);
-    IplImage* imageLimiarizedInGrayScale = imgNoiseExtractor->extractNoises();
+    vector<string> limImgsPaths = vector<string>();
+    for(int i = 1; i < 76; i++) {
+        std::ostringstream s;
+        s << i;
+        limImgsPaths.push_back("limImgs/img" + s.str() + ".png");
+    }
+    
+    //TesseractExecutor* tessExec = new TesseractExecutor();
+    
+    for(int i = 0; i < imgsPaths.size(); i++) {
+        IplImage* image = cvLoadImage(imgsPaths.at(i).c_str(), CV_LOAD_IMAGE_COLOR);
 
-    cvNamedWindow( "Original Image", WINDOW_AUTOSIZE );
-    cvShowImage( "Original window", image );
-    
-    cvNamedWindow( "Display window", WINDOW_AUTOSIZE );// Create a window for display.
-    cvShowImage( "Display window", imageLimiarizedInGrayScale ); 
+        if(!image) {
+            printf("Could not open or find the image: ");
+            printf(imgsPaths.at(i).c_str());
+            return -1;
+        }
 
-    cvWaitKey(0);
-    
-    cvReleaseImage(&image);
-    cvReleaseImage(&imageLimiarizedInGrayScale);
-    
-        //saveLimiarizedImage(imageLimiarizedInGrayScale, imagesPaths[i] + "_limiarized.png");
-    //}
+        ImageNoisesExtractor* imgNoiseExtractor = new ImageNoisesExtractor(image);
+        IplImage* imageLimiarizedInGrayScale = imgNoiseExtractor->extractNoises();
+        
+        cvSaveImage(limImgsPaths.at(i).c_str(), imageLimiarizedInGrayScale);
+        
+        //cvNamedWindow( "Original Image", WINDOW_AUTOSIZE );
+        //cvShowImage( "Original window", image );
+        //cvNamedWindow( "Display window", WINDOW_AUTOSIZE );
+        //cvShowImage( "Display window", imageLimiarizedInGrayScale ); 
+        //cvWaitKey(0);
+        
+        cvReleaseImage(&image);
+        cvReleaseImage(&imageLimiarizedInGrayScale);
+        
+        ImageFormatConverter* converter = new ImageFormatConverter(limImgsPaths.at(i), i+1);
+        converter->convertToTiffFormat();
+        
+        //tessExec->run(limImgsPaths.at(i).c_str());
+    }
     
     return 0;
 }

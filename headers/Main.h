@@ -14,14 +14,15 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#include <cerrno>
-#include <cstdlib>
-#include <cstdio>
 #include <string>
 #include <vector>
-#include <iostream>
+
+#include <sstream>
 
 #include "ImageNoisesExtractor.h"
+#include "TesseractExecutor.h"
+
+#define NUM_IMGS 1
 
 using namespace std;
 using namespace cv;
@@ -39,7 +40,6 @@ public:
     virtual ~Main();
     int main(int argc, char** argv);
 private:
-    void saveLimiarizedImage(IplImage* img, string path);
 };
 
 #endif	/* MAIN_H */

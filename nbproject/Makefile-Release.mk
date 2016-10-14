@@ -35,7 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/76970454/TesseractExecutor.o \
 	${OBJECTDIR}/_ext/1362865800/ImageNoisesExtractor.o \
+	${OBJECTDIR}/ImageFormatConverter.o \
 	${OBJECTDIR}/ImageOneChannelHistogramCreator.o \
 	${OBJECTDIR}/Main.o
 
@@ -64,10 +66,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/projetoiarn: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/projetoiarn ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/_ext/76970454/TesseractExecutor.o: /home/guilhermemg/Desktop/Graduacao/Periodos/Periodo_10/Inteligencia\ Artificial/ProjetoIARN/TesseractExecutor.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/76970454
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/76970454/TesseractExecutor.o /home/guilhermemg/Desktop/Graduacao/Periodos/Periodo_10/Inteligencia\ Artificial/ProjetoIARN/TesseractExecutor.cpp
+
 ${OBJECTDIR}/_ext/1362865800/ImageNoisesExtractor.o: /home/guilhermemg/Desktop/Link\ to\ Inteligencia\ Artificial/ProjetoIARN/ImageNoisesExtractor.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1362865800
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1362865800/ImageNoisesExtractor.o /home/guilhermemg/Desktop/Link\ to\ Inteligencia\ Artificial/ProjetoIARN/ImageNoisesExtractor.cpp
+
+${OBJECTDIR}/ImageFormatConverter.o: ImageFormatConverter.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ImageFormatConverter.o ImageFormatConverter.cpp
 
 ${OBJECTDIR}/ImageOneChannelHistogramCreator.o: ImageOneChannelHistogramCreator.cpp 
 	${MKDIR} -p ${OBJECTDIR}
